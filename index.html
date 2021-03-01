@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AUMS</title>
+
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	<link rel="icon" type="image/png" href="assets/AT-pro-logo.png"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- Import lib -->
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+	<link rel="stylesheet" type="text/css" href="fontawesome-free/css/all.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<!-- End import lib -->
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body class="overlay-scrollbar">
+	<!-- navbar -->
+	<div class="navbar">
+		<!-- nav left -->
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link">
+					<i class="fas fa-bars" onclick="collapseSidebar()"></i>
+				</a>
+			</li>
+			<li class="nav-item faculty">
+				<b>Faculty_Name</b>
+			</li>
+		</ul>
+		<!-- end nav left -->
+		<!-- form -->
+		<form class="navbar-search">
+			<input type="text" name="Search" class="navbar-search-input" placeholder="What are you looking for...">
+			<i class="fas fa-search"></i>
+		</form>
+		<!-- end form -->
+		<!-- nav right -->
+		<ul class="navbar-nav nav-right">
+			<li class="nav-item mode">
+				<a class="nav-link" href="#" onclick="switchTheme()">
+					<i class="fas fa-moon dark-icon"></i>
+					<i class="fas fa-sun light-icon"></i>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link">
+      				<i class="fa fa-bell" aria-hidden="true"></i>
+   				 </a>
+   			<li>
+			<li class="nav-item avt-wrapper">
+				<div class="avt dropdown">
+					<img src="https://randomuser.me/api/portraits/women/71.jpg" alt="User image" class="dropdown-toggle" data-toggle="user-menu">
+					<ul id="user-menu" class="dropdown-menu">
+						<li  class="dropdown-menu-item">
+							<a class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-user-tie"></i>
+								</div>
+								<span>Profile</span>
+							</a>
+						</li>
+						<li class="dropdown-menu-item">
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-cog"></i>
+								</div>
+								<span>Settings</span>
+							</a>
+						</li>
+						<li  class="dropdown-menu-item">
+							<a href="#" class="dropdown-menu-link">
+								<div>
+									<i class="fas fa-sign-out-alt"></i>
+								</div>
+								<span>Logout</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<!-- end nav right -->
+	</div>
+	<!-- end navbar -->
+	<!-- sidebar -->
+	<div class="sidebar">
+		<ul class="sidebar-nav">
+			<li class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-user"></i>
+					</div>
+					<span>
+						My profile
+					</span>
+				</a>
+			</li>
+			<li class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-calendar"></i>
+					</div>
+					<span>Schedule</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item ">
+				<a href="#" class="sidebar-nav-link active">
+					<div>
+						<i class="fa fa-th-list"></i>
+					</div>
+					<span>Attendance</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-home"></i>
+					</div>
+					<span>Gatepass</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-bell"></i>
+					</div>
+					<span>Notifications</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-question-circle"></i>
+					</div>
+					<span>Help</span>
+				</a>
+			</li>
+			<li  class="sidebar-nav-item">
+				<a href="#" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-cog"></i>
+					</div>
+					<span>Settings</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- end sidebar -->
+	<!-- main content -->
+	<div class="wrapper">
+		<div class="row">
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3>
+							Attendance
+						</h3>
+						<i>
+							/360
+						</i>
+					</div>
+					<div class="card-content">
+				
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card">
+					<div class="card-header">
+						<h3>
+							Percentage of leave taken
+						</h3>
+						<i class="fas fa-ellipsis-h"></i>
+					</div>
+					<div class="card-content">
+						<div class="progress-wrapper">
+							<p>
+								Total
+								<span class="float-right">40%</span>
+							</p>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 45%"></div>
+							</div>
+						</div>
+						<div class="progress-wrapper">
+							<p>
+								Sick Leave
+								<span class="float-right">10%</span>
+							</p>
+							<div class="progress">
+								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+							</div>
+						</div>
+						<div class="progress-wrapper">
+							<p>
+								On Duty
+								<span class="float-right">80%</span>
+							</p>
+							<div class="progress">
+							  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-m-12 col-sm-12">
+				<div class="card ">
+					<div class="card-header">
+						<h3>
+							Leave Application Summary
+						</h3>
+						<i class="fas fa-ellipsis-h"></i>
+					</div>
+					<div class="card-content">
+						<table>
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Type of leave</th>
+									<th>No. of days</th>
+									<th>Status</th>
+									<th>Date</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>OD</td>
+									<td>2</td>
+									<td>
+										<span class="dot">
+											<i class="bg-success"></i>
+											Completed
+										</span>
+									</td>
+									<td>20/01/2021</td>
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Sick Leave</td>
+									<td>3</td>
+									<td>
+										<span class="dot">
+											<i class="bg-danger"></i>
+											Rejected
+										</span>
+									</td>
+									<td>17/07/2020</td>
+								</tr>
+												
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-m-12 col-sm-12">
+				<button type="button" class="btn btn-primary btn-lg btn-block">Apply For Leave</button>
+			</div>
+		</div>
+	</div>
+	<!-- end main content -->
+	<!-- import script -->
+	<script src="index.js"></script>
+	<!-- end import script -->
+</body>
+</html>
+
