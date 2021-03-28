@@ -1,0 +1,88 @@
+<?php
+  session_start();
+  if(!isset($_SESSION['userid']))
+  {
+    header('location:login.php');
+  }
+  $_SESSION['userid']=$_SESSION['userid'];
+  include('db.php');
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile</title>
+	
+
+	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+	
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" href="settings.css">
+</head>
+
+<body>
+
+<div class="container">
+  <div class="leftbox">
+    <nav>
+      <a id="x" ><i></i></a>
+      <a id="profile" class="active"><i class="fa fa-user"></i></a>
+      <a id="y"><i></i></a>
+      <a id="z"><i></i></a>
+      <a id="password"><i class="fa fa-key"></i></a>
+      
+      <a id="z"><i></i></a>
+      <a id="y"><i></i></a>
+       <a id="goback"><i class="fa fa-arrow-left"></i></a>
+    </nav>
+  </div>
+  
+  
+  
+  
+  
+  <div class="rightbox">
+    
+    <div class="profile">
+      <h1>Edit Profile</h1>
+      <h2>Name</h2>
+      <p>Mehul Kumar Nirala <button class="btn">update</button></p>
+      <h2>Birthday</h2>
+      <p>May 25</p>
+      <h2>Gender</h2>
+      <p>Male</p>
+      <h2>Email</h2>
+      <p>example@example.com <button class="btn">update</button></p>
+      <h2>Password </h2>
+      <p>••••••• <button class="btn">Change</button></p>
+    </div>
+    
+    <div class="password noshow">
+      <h1>Payment Info</h1>
+      <h2>Payment Method</h2>
+      <p>Mastercard •••• •••• •••• 0000 <button class="btn">update</button></p>
+      <h2>Billing Address</h2>
+      <p>1234 Example Ave | Earth <button class="btn">change</button></p>
+      <h2>Zipcode</h2>
+      <p>000000</p>
+      <h2>Billing History</h2>
+      <p>2018<button class="btn">view</button></p>
+      <h2>Redeem Gift Subscription </h2>
+      <p><input type="text" placeholder="Enter Gift Code"></input> <button class="btn">Redeem</button></p>
+    </div>
+
+    
+  </div>
+</div>
+<script src='settings.js'></script>
+
+	
+</body>
+</html>
+
+
+
