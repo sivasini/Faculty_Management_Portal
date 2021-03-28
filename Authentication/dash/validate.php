@@ -24,7 +24,7 @@ if($row['Fac_ID']==$username || $row['mobile']==$username && $row['passwd']==$ha
 	    $_SESSION['userid']=$username;
 		if(!empty($_POST["remember"])) {
 	       setcookie ("c_username",$username,time()+ 3600);
-		   setcookie ("c_password",$username,time()+ 3600);
+		   setcookie ("c_password",$password,time()+ 3600);
         } 
         else { 
                if(isset($_COOKIE["c_username"]))   
