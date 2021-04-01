@@ -192,11 +192,13 @@
 							<div class="progress">
 								<?php
 								if((($ODleaveref-$ODleave)/$ODleaveref)*100 > 80){
-									?>
-										<div class="progress-bar  bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($ODleaveref-$ODleave)/$ODleaveref)*100; ?>%"></div>
+									$leave1 = (($ODleaveref-$ODleave)/$ODleaveref)*100;
+									?>	<progress id="file" value="<?php echo $leave1; ?>" max="100" style='height:20px;width:100%'></progress>
+										<!-- <div class="progress-bar  bg-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width</div> -->
 									<?php }
 								else{ ?>
-								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($ODleaveref-$ODleave)/$ODleaveref)*100; ?>%"></div>
+									<progress id="file" value="<?php echo $leave1; ?>" max="100" style='height:20px;width:100%'></progress>
+								<!-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: %"></div> -->
 							<?php } ?>
 							</div>
 						</div>
@@ -211,16 +213,19 @@
 							</p>
 							<div class="progress">
 								<?php
+								$leave2 = (($sickleaveref-$sickleave)/$sickleaveref)*100;
 								if((($sickleaveref-$sickleave)/$sickleaveref)*100 > 80){
+									
 									?>
-										<div class="progress-bar bt-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($sickleaveref-$sickleave)/$sickleaveref)*100; ?>%"></div>
+									<progress id="file" value="<?php echo $leave2; ?>" max="100" style='height:20px;width:100%'></progress>
+										<!-- <div class="progress-bar bt-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: ?>%"></div> -->
 							<?php 
 								}
 								else{ 
-									$num = (($sickleaveref-$sickleave)/$sickleaveref)*100;
+									
 							?>
+								<progress id="file" value="<?php echo $leave2; ?>" max="100" style='height:20px;width:100%'></progress>
 									<!-- <progress id="file" value="<?php echo $num; ?>" max="100"> 32% </progress> -->
-								<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($sickleaveref-$sickleave)/$sickleaveref)*100; ?>%"></div>
 								<?php } ?>
 							</div>
 						</div>
@@ -235,12 +240,13 @@
 							</p>
 							<div class="progress">
 								<?php
+								$leave3 = (($casualleaveref-$casualleave)/$casualleaveref)*100;
 								if((($casualleaveref-$casualleave)/$casualleaveref)*100 > 80){
 									?>
-										<div class="progress-bar bt-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($casualleaveref-$casualleave)/$casualleaveref)*100; ?>%"></div>
+										<progress id="file" value="<?php echo $leave3; ?>" max="100" style='height:20px;width:100%'></progress>
 									<?php }
 								else{ ?>
-							  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($casualleaveref-$casualleave)/$casualleaveref)*100; ?>%"></div>
+							  			<progress id="file" value="<?php echo $leave3; ?>" max="100" style='height:20px;width:100%'></progress>
 							  <?php } ?>
 							</div>
 						</div>
@@ -255,12 +261,13 @@
 							</p>
 							<div class="progress">
 								<?php
+								$leave4 = (($paidleaveref-$paidleave)/$paidleaveref)*100;
 								if((($paidleaveref-$paidleave)/$paidleaveref)*100 > 80){
 									?>
-										<div class="progress-bar bt-danger progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($paidleaveref-$paidleave)/$paidleaveref)*100; ?>%"></div>
+										<progress id="file" value="<?php echo $leave4; ?>" max="100" style='height:20px;width:100%'></progress>
 									<?php }
 								else{ ?>
-							  <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo (($paidleaveref-$paidleave)/$paidleaveref)*100; ?>%"></div>
+										<progress id="file" value="<?php echo $leave4; ?>" max="100" style='height:20px;width:100%'></progress>
 							  <?php } ?>
 							</div>
 						</div>
