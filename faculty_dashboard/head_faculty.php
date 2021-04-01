@@ -44,7 +44,7 @@
 				<a class="nav-link">
       				<i class="fa fa-bell" aria-hidden="true"></i>
    				 </a>
-   			<li>
+   			</li>
 			<li class="nav-item avt-wrapper">
 				<div class="avt dropdown">
 					
@@ -136,8 +136,9 @@
   	<?php
 							$connection =mysqli_connect("localhost","root","","faculty_dashboard");
 							$db = mysqli_select_db($connection,'faculty_dashboard');
-							$query = "SELECT *,DATEDIFF(end_date,start_date) AS dy FROM Attendance WHERE  start_date >'2020-06-04' and status like 'Pending' Order by start_date desc";
-							$query_run = mysqli_query($connection,$query);
+							$today = date("Y-m-d");
+							$query = "SELECT *,DATEDIFF(end_date,start_date) AS dy FROM Attendance WHERE  start_date >'2020-06-04' and status like 'Pending' Order by start_date desc " ;
+							$query_run2 = mysqli_query($connection,$query);
 
 						
 	?>
@@ -168,11 +169,14 @@
                     </tr>
                 </thead>
                 <?php
-								if($query_run)
+								if($query_run2)
 								{
-									foreach($query_run as $row)
+									foreach($query_run2 as $row)
 									{
-								
+										$temp = $row['Fac_ID'];
+										$query1 = "SELECT type,DATEDIFF(end_date,start_date) AS dy FROM Attendance WHERE fac_id LIKE '$temp' and start_date >'2020-06-04' and status like 'Accepted'";
+										$query_run1 = mysqli_query($connection,$query1);
+										include('link_db.php');
 									
 							?>
                 <tbody>
@@ -185,11 +189,28 @@
                         <td data-title="Reason"><?php echo $row['reason']; ?></td>
                         <td data-title="No of Leave"><?php echo $row['dy']; ?></td>
                         <td data-title="Status"><?php echo $row['status']; ?></td>
+                        
+                        <?php
+                        include('head_facautoreject.php');
+                        $today = date("Y-m-d");
+                        if($set == 1 || $row['start_date'] < $today){
+                        ?>
+                        	<td data-title="Action">
+                            <a href="reject.php?start_date=<?php echo $row['start_date'];?>&Fac_ID=<?php echo $row['Fac_ID']; ?>">Reject</a>
+                            </td>
+                        <?php
+                        }
+                        else
+                        {
+                        ?>
                         <td data-title="Action">
                             <a href="approve.php?start_date=<?php echo $row['start_date']; ?>&Fac_ID=<?php echo $row['Fac_ID']; ?>">Approve</a>
                             <a href="reject.php?start_date=<?php echo $row['start_date'];?>&Fac_ID=<?php echo $row['Fac_ID']; ?>">Reject</a>
                                 
                         </td>
+                        <?php
+                    }
+                    ?>
                     </tr >
                     
                 </tbody>
@@ -209,9 +230,11 @@
 </div>
 </div>
 </div>
+
 <script src='head_faculty.js'></script>
 
 	
 </body>
 </html>
 
+<!-- INSERT INTO `attendance` (`Fac_ID`, `apply_date`, `start_date`, `end_date`, `reason`, `type`, `status`) VALUES ('FAC0001', '2021-03-10', '2021-03-12', '2021-03-13', 'I am getting vaccinated so want a day off', 'Paid Leave', 'pending'), ('FAC0001', '2021-01-07', '2021-01-10', '2021-01-13', 'I am taking the students for paper presentation in kalinga university', 'On Duty', 'Accepted'); -->

@@ -144,11 +144,8 @@
 							$db = mysqli_select_db($connection,'faculty_dashboard');
 	?>
 	<?php
-							$query = "SELECT * FROM Attendance WHERE fac_id LIKE 'FAC0035'  and start_date >'2020-06-04' Order by start_date desc";
+							$query = "SELECT * FROM Attendance WHERE fac_id LIKE 'FAC0035'  and start_date >'2020-06-04' and status like 'Accepted' Order by start_date desc";
 							$query_run = mysqli_query($connection,$query);
-
-							$query1 = "SELECT type,DATEDIFF(end_date,start_date) AS dy FROM Attendance WHERE fac_id LIKE 'FAC0035' and start_date >'2020-06-04' and status like 'Accepted'";
-							$query_run1 = mysqli_query($connection,$query1);
 	?>
 							<!-- $connection =mysqli_connect("localhost","root","","faculty_dashboard");
 							$db = mysqli_select_db($connection,'faculty_dashboard');
@@ -248,7 +245,7 @@
           <h5 class="card-subtitle mb-2 col-1 text-muted"><?php echo $row['end_date']; ?></h5>
           <h5 class="card-text col-3"> <?php echo $row['reason']; ?></h5>
        	  <h5 class="card-text col-1"> <?php echo $row['status']; ?></h5>
-       	  <?php
+       	  <!-- <?php
        	  
 		  $r = new DateTime('now');
 		  $s = new DateTime($row['start_date']);
@@ -261,7 +258,7 @@
        	  <h5><a href="delete_application.php?start_date=<?php echo $row['start_date']; ?>">Delete</a></h5>
        	  <?php
        		   }
-       	  ?>
+       	  ?> -->
 		  <!-- <button class="card-text col-1" onclick="<?php 
 			
 		  		$a = $row['start_date'];

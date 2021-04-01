@@ -160,42 +160,27 @@ $(document).ready(function() {
 });
 
 
-(function($) {
 
-  $.fn.progress_fnc = function(options) {
-    var settings = $.extend({
-      type: 'start'
-    }, options);
 
-    var div = $(this);
-    var progress = div.find('.cssProgress');
 
-    progress.each(function() {
-      var self = $(this);
-      var progress_bar = self.find('.cssProgress-bar');
-      var progress_label = self.find('.cssProgress-label, .cssProgress-label2');
-      var progress_value = progress_bar.data('percent');
-      var percentage = parseInt(progress_value, 10) + '%';
-
-      progress_bar.css({'width': '0%', 'transition': 'none', '-webkit-transition': 'none', '-moz-transition': 'none'});
-
-      if(settings.type == 'start') {
-
-        progress_bar.animate({
-          width: percentage
-        }, {
-          duration: 1000,
-          step: function(x) {
-            progress_label.text(Math.round(x) + '%');
-          }
-        });
-
-      } else if(settings.type == 'reset') {
-        progress_bar.css('width', '0%');
-        progress_label.text('0%');
-      }
-
+// on page load...
+    moveProgressBar();
+    // on browser resize...
+    $(window).resize(function() {
+        moveProgressBar();
     });
-  }
 
-}(jQuery));
+    // SIGNATURE PROGRESS
+    function moveProgressBar() {
+      console.log("moveProgressBar");
+        var getPercent = ($('.progress-wrap').data('progress-percent') / 100);
+        var getProgressWrapWidth = $('.progress-wrap').width();
+        var progressTotal = getPercent * getProgressWrapWidth;
+        var animationLength = 2500;
+        
+        // on page load, animate percentage bar to data percentage length
+        // .stop() used to prevent animation queueing
+        $('.progress-bar').stop().animate({
+            left: progressTotal
+        }, animationLength);
+    }

@@ -23,7 +23,7 @@ $Reason = $_POST['Reason'];
 // $Reason='Corona vaccinated';
 
 // Attempt insert query execution
-$sql = "INSERT INTO attendance(Fac_id,apply_date,start_date,end_date,Reason,type,status) VALUES ('FAC0035',CURDATE(),$start_date,$end_date,'$Reason','$type','pending')";
+$sql = "INSERT INTO attendance(Fac_id,apply_date,start_date,end_date,Reason,type,status) VALUES ('FAC0035',CURDATE(),$start_date,$end_date,'$Reason','$type','Pending')";
 if(mysqli_query($link, $sql)){
     echo "Records added successfully.";
 } else{
