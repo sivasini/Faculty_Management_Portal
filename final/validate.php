@@ -46,7 +46,7 @@ if($username=='HFAC001' || $username=='9876543210'){
 else
 {
 
-   if($row['Fac_ID']==$username || $row['mobile']==$username && $row['passwd']==$hashed_pass){
+   if(($row['Fac_ID']==$username || $row['mobile']==$username) && $row['passwd']==$hashed_pass){
 	    //$query="select Name from faculty where Fac_ID='$username';
 	    $_SESSION['userid']=$username;
 		$_SESSION['passw']=$hashed_pass;
