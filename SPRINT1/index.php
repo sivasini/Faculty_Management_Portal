@@ -137,7 +137,7 @@
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+				<a href="gatepass_fac.php" class="sidebar-nav-link">
 					<div>
 						<i class="fa fa-home"></i>
 					</div>

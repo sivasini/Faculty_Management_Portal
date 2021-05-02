@@ -1,6 +1,6 @@
 <?php
   session_start();
-  if($_SESSION['userid'] != 'HFAC001')
+  if(!isset($_SESSION['userid']))
   {
     header('location:login.php');
   }
@@ -17,12 +17,21 @@
 
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+ 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-	
+	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="head_faculty.css">
+	<style type="text/css">
+		.butn {
+  background-color: DodgerBlue; /* Blue background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
+}
+	</style>
 </head>
 <body class="overlay-scrollbar">
 	<!-- navbar -->
@@ -42,8 +51,7 @@
 				$result=mysqli_query($con,$sql);
 		        $row=mysqli_fetch_assoc($result);
 				
-				echo $row['Name'];
-			
+				echo $row['Name'];				
 				?></b>
 			</li>
 		</ul>
@@ -108,7 +116,7 @@
 				</a>
 			</li>
 			<li class="sidebar-nav-item">
-				<a href="hprofile.php" class="sidebar-nav-link">
+				<a href="profile.php" class="sidebar-nav-link">
 					<div>
 						<i class="fa fa-user"></i>
 					</div>
@@ -123,18 +131,16 @@
 					<span class='span'>Notifications</span>
 				</a>
 			</li>
-			<li class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link  active">
+			<li  class="sidebar-nav-item">
+				<a href="index.php" class="sidebar-nav-link">
 					<div>
-						<i class="fa fa-edit"></i>
+						<i class="fa fa-th-list"></i>
 					</div>
-					<span class='span'>
-						Manage pass
-					</span>
+					<span class='span'>Attendance</span>
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="gatepass_hfac.php" class="sidebar-nav-link">
+				<a href="#" class="sidebar-nav-link active">
 					<div>
 						<i class="fa fa-home"></i>
 					</div>
@@ -149,88 +155,107 @@
 					<span class='span'>Help</span>
 				</a>
 			</li>
-			
 		</ul>
 	</div>
-  	
+	<!-- main content -->
 
-  	<?php
-						
-							$today = date("Y-m-d");
-							$query = "SELECT *,DATEDIFF(end_date,start_date) AS dy FROM Attendance WHERE  start_date >'2020-06-04' and status like 'Pending' Order by start_date desc " ;
-							$query_run2 = mysqli_query($con,$query);
-
-						
-	?>
 	<div class="wrapper">
 		<div class="row">
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card">
 					<div class="card-header">
 						<h3>
-							Manage Leave Application
+							Student Leave Application
 						</h3>
 					</div>
-	
-    <!-- End Title -->
-    	<section class="component-section" id="employee">
+	<?php
+							$query = "SELECT * FROM gatepass where Fac_ID='$username'";
+							$query_run = mysqli_query($con,$query);
+	?>			
+	<section class="component-section" id="employee">
         <table class="table pmd-table table-hover pmd-table-card">
                 <thead class="thead-light">
                     <tr>
-                        <th>Employee</th>
+                        <th>Student ID</th>
                         <th>Leave Type</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Reason</th>
-                        <th>No of Leave</th>
                         <th>Status</th>
                         <th></th>
                         <th></th>
                     </tr>
                 </thead>
-                <?php
-								if($query_run2)
+                
+                	<?php
+                	if($query_run)
 								{
-									foreach($query_run2 as $row)
+									foreach($query_run as $row)
 									{
-										$temp = $row['Fac_ID'];
-										$query1 = "SELECT type,DATEDIFF(end_date,start_date) AS dy FROM Attendance WHERE fac_id LIKE '$temp' and start_date >'2020-06-04' and status like 'Accepted'";
-										$query_run1 = mysqli_query($con,$query1);
-										include('link_db.php');
-									
-							?>
-                <tbody>
-
+										$s_id = $row['student_id']
+					?>
+					<tbody>
                     <tr class="card1">
-                        <td data-title="Employee"><?php echo $row['Fac_ID']; ?></td>
+                        <td data-title="Employee"><?php echo $row['student_id']; ?></td>
                         <td data-title="Leave Type"><?php echo $row['type']; ?></td>
                         <td data-title="Start Date"><?php echo $row['start_date']; ?></td>
                         <td data-title="End Date"><?php echo $row['end_date']; ?></td>
                         <td data-title="Reason"><?php echo $row['reason']; ?></td>
-                        <td data-title="No of Leave"><?php echo $row['dy']; ?></td>
                         <td data-title="Status"><?php echo $row['status']; ?></td>
-                        
-                        <?php
-                        include('head_facautoreject.php');
-                        $today = date("Y-m-d");
-                        if($set == 1 || $row['start_date'] < $today){
-                        ?>
-                        	<td data-title="Action">
-                            <a href="reject.php?start_date=<?php echo $row['start_date'];?>&Fac_ID=<?php echo $row['Fac_ID']; ?>">Reject</a>
-                            </td>
-                        <?php
-                        }
-                        else
-                        {
-                        ?>
-                        <td data-title="Action">
-                            <a href="approve.php?start_date=<?php echo $row['start_date']; ?>&Fac_ID=<?php echo $row['Fac_ID']; ?>">Approve</a>
-                            <a href="reject.php?start_date=<?php echo $row['start_date'];?>&Fac_ID=<?php echo $row['Fac_ID']; ?>">Reject</a>
-                                
-                        </td>
-                        <?php
-                    }
-                    ?>
+		                    <?php
+
+		                    if($row['status']!="accepted" and $row['status']!="rejected")
+		                    {
+		                        	$query1 = "SELECT * FROM `st_leave_percentage` where student_id='$s_id'";
+		                        	$query_run1 = mysqli_query($con,$query1);
+		                        	if($query_run1)
+		                        	{
+		                        		foreach($query_run1 as $row1)
+		                        		{	
+		                        			if($row1['leave_percentage'] < 100)
+		                        			{
+			                        			if($row1['leave_percentage'] < 80)
+			                        			{
+		                    ?>
+						                        	<td>		
+						                        		<a href="accept_st.php?start_date=<?php echo $row['start_date'];?>&student_id=<?php echo $row['student_id']; ?>">Accept</a>
+						                        	</td>
+		                    					<?php
+						                        }
+						                        else
+						                        {
+						                        ?>
+
+						                        <td>
+						                            <a href="frwd_st.php?start_date=<?php echo $row['start_date'];?>&student_id=<?php echo $row['student_id']; ?>">Forward</a>
+						                        </td>
+					                        <?php
+					                   		}
+					                   	}
+					                   		else
+					                   		{
+		                   					?>
+						                   		<td></td>
+		                   					<?php
+		                  					}
+		                  				
+		                  			}
+		                  	}
+		                   					?>
+		                        <td>
+		                            <a href="reject_st.php?start_date=<?php echo $row['start_date'];?>&student_id=<?php echo $row['student_id']; ?>">Reject</a>
+		                        </td>
+		                        <?php
+		                    }
+		                    else
+		                    {
+		                    	?>
+		                    	<td></td>
+		                    	<td></td>
+		                    <?php
+		                    }
+		                    ?>
+
                     </tr >
                     
                 </tbody>
@@ -261,3 +286,8 @@
 	
 </body>
 </html>
+
+
+
+
+
