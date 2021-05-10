@@ -31,6 +31,10 @@
   font-size: 16px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
 }
+
+.emergency{
+		background-color: #F77168;
+	}
 	</style>
 </head>
 <body class="overlay-scrollbar">
@@ -169,7 +173,7 @@
 						</h3>
 					</div>
 	<?php
-							$query = "SELECT * FROM gatepass where status='forwarded'";
+							$query = "SELECT * FROM gatepass where status='forwarded' OR status='emergency'";
 							$query_run = mysqli_query($con,$query);
 	?>			
 	<section class="component-section" id="employee">
@@ -191,9 +195,13 @@
 								{
 									foreach($query_run as $row)
 									{
+										if($row['status'] == 'emergency'){
+
+
 					?>
+
 					<tbody>
-                    <tr class="card1">
+                    <tr class="card1 emergency">
                         <td data-title="Employee"><?php echo $row['student_id']; ?></td>
                         <td data-title="Leave Type"><?php echo $row['type']; ?></td>
                         <td data-title="Start Date"><?php echo $row['start_date']; ?></td>
@@ -210,8 +218,30 @@
                 </tbody>
                 <?php
 									}
+									else{
+							?>
+							<tbody>
+                    <tr class="card1">
+                        <td data-title="Employee"><?php echo $row['student_id']; ?></td>
+                        <td data-title="Leave Type"><?php echo $row['type']; ?></td>
+                        <td data-title="Start Date"><?php echo $row['start_date']; ?></td>
+                        <td data-title="End Date"><?php echo $row['end_date']; ?></td>
+                        <td data-title="Reason"><?php echo $row['reason']; ?></td>
+                        <td>		
+                        	<a href="accept_st.php?start_date=<?php echo $row['start_date'];?>&student_id=<?php echo $row['student_id']; ?>">Accept</a>
+                        </td>
+                        <td>
+                            <a href="reject_st.php?start_date=<?php echo $row['start_date'];?>&student_id=<?php echo $row['student_id']; ?>">Reject</a>
+                        </td>
+                    </tr >
+                    
+                </tbody>
+
+
+							<?php
 								}
-								
+							}
+							}
 								else
 								{?>
 									<tbody>
@@ -229,6 +259,8 @@
 </div>
 </div>
 </div>
+
+
 
 <script src='head_faculty.js'></script>
 

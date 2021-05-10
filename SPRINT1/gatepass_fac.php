@@ -169,7 +169,7 @@
 						</h3>
 					</div>
 	<?php
-							$query = "SELECT * FROM gatepass where Fac_ID='$username'";
+							$query = "SELECT * FROM gatepass where Fac_ID='$username' and status<>'emergency'";
 							$query_run = mysqli_query($con,$query);
 	?>			
 	<section class="component-section" id="employee">
