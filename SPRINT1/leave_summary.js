@@ -103,7 +103,7 @@ function myFunction() {
 }
 
 
-  $(document).ready(function() {
+  (document).ready(function() {
 
   $('#example-1').progress_fnc();
   $('#example-2').progress_fnc();
@@ -156,3 +156,4 @@ function myFunction() {
             left: progressTotal
         }, animationLength);
     }
+

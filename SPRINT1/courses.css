@@ -16,16 +16,7 @@
 	--dark-second-background: #181818;
 }
 
-.dd {
-  position: relative;
-  display: inline-block;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  background-color: #e62e46;
-  border-radius: 4px;
-  width: 220px;
-  text-align: left;
-}
+
 
 .dd > a,
 .dd > span {
@@ -664,9 +655,7 @@ width:200px;
   cursor: pointer;
 }
 
-.card-header i:hover {
-	cursor: pointer;
-}
+
 
 .card-header h3 {
 	margin: 0;
@@ -677,16 +666,7 @@ width:200px;
 	overflow-x: auto;
 }
 
-.card:hover{
-     transform: scale(1.02);
-     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-}
 
-
-.card1:hover{
-     transform: scale(1.02);
-     box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
-}
 
 table {
 	border-collapse: collapse;
@@ -925,512 +905,70 @@ ul li {
   
 }
 
-
-/* -----------------------------------------------------
-	Pure CSS Progress Bars
-  GitHub Project: https://github.com/rkchauhan/pure-css-progress-bars/
-	By: Ravikumar Chauhan
-  Find me on -
-	Twitter: https://twitter.com/rkchauhan01
-  Facebook: https://www.facebook.com/ravi032chauhan
-  GitHub: https://github.com/rkchauhan
-  CodePen: https://codepen.io/rkchauhan
--------------------------------------------------------- */
-
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-// Progress bg colours
-$pg-default-bg: #EEE;
-// Progress bar bg colours
-$bar-default-bg: #3798d9;
-$bar-info-bg: #9575cd;
-$bar-danger-bg: #ef5350;
-$bar-success-bg: #66bb6a;
-$bar-warning-bg: #ffb74d;
-
-// ADDS A BROWSER PREFIX TO THE PROPERTY
-@mixin browser_prefix($property, $value) {
-  -webkit-#{$property}: #{$value};
-  -moz-#{$property}: #{$value};
-  -ms-#{$property}: #{$value};
-  -o-#{$property}: #{$value};
-  #{$property}: #{$value};
+.hralyn{
+	padding-top:10px;
+	display: flex;
+	justify-content: space-between;
 }
 
-// KEYFRAMES
-@mixin keyframes($animation-name) {
-  @-webkit-keyframes #{$animation-name} {
-    @content;
-  }
-  @-moz-keyframes #{$animation-name} {
-    @content;
-  }
-  @-ms-keyframes #{$animation-name} {
-    @content;
-  }
-  @-o-keyframes #{$animation-name} {
-    @content;
-  }
-  @keyframes #{$animation-name} {
-    @content;
-  }
-}
-
-// ANIMATION
-@mixin animation($str) {
-  @include browser_prefix('animation', $str);
-}
-
-@mixin cssProgressGlowActive($name, $color) {
-  @include keyframes($name) {
-    0%, 100% {
-      box-shadow: 5px 0px 15px 0px #{$color};
-    }
-    45% {
-      box-shadow: 1px 0px 4px 0px #{$color};
-    }
-  }
-}
-
-/* -----------------------------------------------------
-	Body
--------------------------------------------------------- */
-body {
-  margin: 0;
+.button {
+  display: block;
+  position: relative;
+  float: left;
+  width: 120px;
   padding: 0;
-  color: #333;
-  font-size: 1em;
-  font-family: "Roboto", sans-serif;
-  background-color: #F8F8F8;
-}
-
-*, *::after, *::before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-a {
-  color: #ffa000;
-  text-decoration: none;
-  outline: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-/* -----------------------------------------------------
-	Main
--------------------------------------------------------- */
-main {
-  width: 100%;
-  max-width: 940px;
-  margin: 0 auto;
-
-  .main-content {
-    margin: 0 8px;
-    padding: 60px 0;
-  }
-
-  .examples {
-    display: block;
-    margin-bottom: 65px;
-    padding: 2.8rem 3%;
-    background-color: #FFF;
-    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.157);
-
-    &:last-child { margin-bottom: 20px; }
-
-    h3 {
-      color: #444;
-      margin: 0;
-      padding: 0 0 20px 0;
-    }
-  }
-}
-
-/* -----------------------------------------------------
-	Header
--------------------------------------------------------- */
-header {
-  display: block;
-  width: 100%;
-  padding: 20px 0;
+  margin: 10px 20px 10px 0;
+  font-weight: 600;
   text-align: center;
-  background-color: #FFF;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.1);
-
-  h2 {
-    margin: 0;
-    padding: 25px 0;
-    color: #646360;
-    font-size: 2em;
-    letter-spacing: 1px;
-  }
-
-  .project {
-    display: block;
-    padding: 8px 0;
-  }
+  line-height: 50px;
+  color: #FFF;
+  border-radius: 5px;
+  transition: all 0.2s ;
+}
+.btnLightBlue {
+  background: #5DC8CD;
+}
+.btnFade.btnLightBlue:hover {
+  background: #01939A;
 }
 
-/* -----------------------------------------------------
-	Footer
--------------------------------------------------------- */
-footer {
-  display: block;
-  overflow: hidden;
-  width: 100%;
-  min-height: 80px;
-  background-color: #FFF;
-  border-top: 1px solid #EEE;
-
-  .row {
-    width: 100%;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .footer-content {
-    margin: 0 8px;
-    padding: 25px 0 18px;
-    text-align: center;
-
-    span {
-      color: rgba(0, 0, 0, 0.525);
-      font-size: 0.857em;
-      margin-right: 5px;
-    }
-  }
-
-  @media only screen and (max-width: 768px) {
-    span {
-      display: block;
-      width: 100%;
-      margin-bottom: 8px;
-    }
-  }
-}
-
-/* -----------------------------------------------------
-	Buttons
--------------------------------------------------------- */
-.btn1,
-.btn {
-   color: #FFF;
-   display: inline-block;
-   position: relative;
-   text-align: center;
-   text-decoration: none;
-   vertical-align: baseline;
-   white-space: nowrap;
-   cursor: pointer;
-   outline: none;
-   border-radius: 3px;
-
-   &:hover {
-      text-decoration: none;
-   }
-}
-
-.gitBtn,
-.penBtn {
-  height: 38px;
-  font-size: 1.1em;
-  line-height: 38px;
-  margin-right: 10px;
-  padding: 0px 22px;
-  border: 1px solid #FFA500;
-  background-color: #FFA500;
-  box-shadow: 0px 2px rgba(0, 0, 0, 0.157);
-
-  &:last-child { margin-right: 0; }
-}
-
-.btn {
-  height: 30px;
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 30px;
-  padding: 0px 14px;
-
-  &.btn-primary {
-    border: 1px solid #FFA500;
-    background-color: #FFA500;
-
-    &:hover {
-      border: 1px solid darken(#FFA500, 3%);
-      background-color: darken(#FFA500, 3%);
-    }
-  }
-}
-
-
-
-.deleteButton {
-background: transparent;
-border: 1px solid #f00;
-border-radius: 2em;
-color: #f00;
-display: inline-block;
-font-size: 12px;
-height: 20px;
-line-height: 2px;
-margin: 0 0 8px;
-padding: 0;
-text-align: center;
-width: 20px;
-}
-
-.wo{
-	width: 100%;
-	margin: 5px;
-	padding: 10px;
-}
-
-
-
-/*Lollipop background gradient animation*/
-@keyframes move {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 30px 30px;
-  }
-}
-
-.perc {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-weight: bold;
-}
-
-
-progress:not(value) {
-  /* Add your styles here. As part of this walkthrough we will focus only on determinate progress bars. */
-}
-
-/* Styling the determinate progress element */
-
-progress[value] {
-  /* Get rid of the default appearance */
-  appearance: none;
-  
-  /* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
-  border: none;
-  
-  /* Add dimensions */
-  width: 100%; height: 20px;
-  
-  /* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
-    background-color: whiteSmoke;
-    border-radius: 3px;
-    box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
-  
-  /* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
-  color: royalblue;
-  
+.dd {
   position: relative;
-  margin: 0 0 1.5em; 
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  background-color: #e62e46;
+  border-radius: 4px;
+  width: 220px;
+  text-align: left;
 }
 
-/*
-Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
--webkit-progress-bar -> To style the progress element container
--webkit-progress-value -> To style the progress element value.
-*/
-
-progress[value]::-webkit-progress-bar {
-  background-color: whiteSmoke;
-  border-radius: 3px;
-  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+.card-hea {
+	padding: 30px 30px;
+	border-bottom: 1px solid var(--second-bg-color);
+	position: relative;
 }
 
-progress[value]::-webkit-progress-value {
-  position: relative;
-  
-  background-size: 35px 20px, 100% 100%, 100% 100%;
-  border-radius:3px;
-  
-  /* Let's animate this */
-  animation: animate-stripes 5s linear infinite;
-}
-
-@keyframes animate-stripes { 100% { background-position: -100px 0; } }
-
-/* Let's spice up things little bit by using pseudo elements. */
-
-progress[value]::-webkit-progress-value:after {
-  /* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
-  content: '';
-  position: absolute;
-  
-  width:5px; height:5px;
-  top:7px; right:7px;
-  
-  background-color: white;
-  border-radius: 100%;
-}
-
-/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
-
-progress[value]::-moz-progress-bar {
-  /* Gradient background with Stripes */
-  background-image:
-  -moz-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -moz-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -moz-linear-gradient( left, #09c, #f44);
-  
-  background-size: 35px 20px, 100% 100%, 100% 100%;
-  border-radius:3px;
-  
-  /* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
-}
-
-/* Fallback technique styles */
-.progress-bar {
-  background-color: whiteSmoke;
-  border-radius: 3px;
-  box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
-
-  /* Dimensions should be similar to the parent progress element. */
-  width: 100%; height:20px;
-}
-
-.progress-bar span {
-  background-color: royalblue;
-  border-radius: 3px;
-  
-  display: block;
-  text-indent: -9999px;
-}
-
-p[data-value] { 
-  
-  position: relative; 
-}
-
-/* The percentage will automatically fall in place as soon as we make the width fluid. Now making widths fluid. */
-
-p[data-value]:after {
-  content: attr(data-value) '%';
-  position: absolute; right:0;
+.card-hea i {
+	color: var(--main-color);
+	position: absolute;
+	right: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 6px 10px rgba(0,0,0,.08), 0 0 6px rgba(0,0,0,.05);
+      transition: .3s transform cubic-bezier(.155,1.105,.295,1.12),.3s box-shadow,.3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+  padding: 20px;
+  cursor: pointer;
 }
 
 
 
-
-
-.html5::-webkit-progress-value,
-.python::-webkit-progress-value  {
-  /* Gradient background with Stripes */
-  background-image:
-  -webkit-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -webkit-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -webkit-linear-gradient( left, #09c, #f44);
+.card-hea h3 {
+	margin: 0;
 }
 
-.css3::-webkit-progress-value,
-.php::-webkit-progress-value 
-{
-  /* Gradient background with Stripes */
-  background-image:
-  -webkit-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -webkit-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -webkit-linear-gradient( left, #09c, #ff0);
-}
-
-.jquery::-webkit-progress-value,
-.node-js::-webkit-progress-value 
-{
-  /* Gradient background with Stripes */
-  background-image:
-  -webkit-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -webkit-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -webkit-linear-gradient( left, #09c, #690);
-}
-
-/* Similarly, for Mozillaa. Unfortunately combining the styles for different browsers will break every other browser. Hence, we need a separate block. */
-
-.html5::-moz-progress-bar,
-.php::-moz-progress-bar {
-  /* Gradient background with Stripes */
-  background-image:
-  -moz-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -moz-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -moz-linear-gradient( left, #09c, #f44);
-}
-
-.css3::-moz-progress-bar,
-.php::-moz-progress-bar {
-{
-  /* Gradient background with Stripes */
-  background-image:
-  -moz-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -moz-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -moz-linear-gradient( left, #09c, #ff0);
-}
-
-.jquery::-moz-progress-bar,
-.node-js::-moz-progress-bar {
-  /* Gradient background with Stripes */
-  background-image:
-  -moz-linear-gradient( 135deg,
-                           transparent,
-                           transparent 33%,
-                           rgba(0,0,0,.1) 33%,
-                           rgba(0,0,0,.1) 66%,
-                           transparent 66%),
-    -moz-linear-gradient( top,
-                            rgba(255, 255, 255, .25),
-                            rgba(0,0,0,.2)),
-     -moz-linear-gradient( left, #09c, #690);
+.car{
+	background-color: #D3D3D3;
 }

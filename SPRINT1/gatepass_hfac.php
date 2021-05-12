@@ -227,7 +227,7 @@
                         <td data-title="Start Date"><?php echo $row['start_date']; ?></td>
                         <td data-title="End Date"><?php echo $row['end_date']; ?></td>
                         <td data-title="Reason"><?php echo $row['reason']; ?></td>
-                        <td>		
+                        <td>
                         	<a href="accept_st.php?start_date=<?php echo $row['start_date'];?>&student_id=<?php echo $row['student_id']; ?>">Accept</a>
                         </td>
                         <td>
