@@ -62,7 +62,7 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="courses.css">
+	<link rel="stylesheet" type="text/css" href="courses1.css">
 
 </head>
 <body class="overlay-scrollbar">
@@ -305,17 +305,30 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 				</div>
 				<div class="col-12 col-m-12 col-sm-12">
 				<div class="card1 ">
-<div class="card-header">
-						<form action="courses_exp.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
+					<div class="card-header">
+						
 				          <h3>Make Assignment</h3>
-				          <hr>
-				          <div class=hralyn>
+				    </div>
+				    <div class="card-header">
+				    	<form action="courses_exp.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
+				          <div class="hralyn">
 				          <input type="file" name="myfile"><br>
+				          </div>
+				          <div class="hralyn">
+				          <label>End Date:</label>
 				          <input type="Date" name="mydate">
+				          </div>
+				          <div class="hralyn">
+				          <label>Format:</label>
 				          <input type="text" name="myformat">
+				          </div>
+				          <div class="hralyn">
+				          <label>Reason:</label>
 				          <input type="text" name="myreason">
+				      	  </div>
+				      	  <div class="xav">
 				          <button class="button btnFade btnLightBlue" type="submit" name="save">CREATE</button>
-				          <div>
+						</div>
 				        </form>
 				    </div>
 			</div>

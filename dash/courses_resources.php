@@ -7,9 +7,9 @@
   $_SESSION['userid']=$_SESSION['userid'];
   $_SESSION['passw']=$_SESSION['passw'];
   include('db.php');
-
+  if($_GET['Course_ID']){
   $Course_ID = $_GET['Course_ID'];
-
+  }
   $username=$_SESSION['userid'];
   $sql = "select * from faculty, login where (login.Fac_ID='$username' || login.mobile='$username') && login.Fac_ID=faculty.Fac_ID ";
   $result=mysqli_query($con,$sql);
@@ -22,14 +22,12 @@
   $a = $_SESSION['Course_ID'];*/
 
 
-
 // connect to the database
   $conn = new mysqli("localhost","root","","faculty_dashboard");
 // Uploads files
 if (isset($_POST['save'])) { // if save button on the form is clicked
     // name of the uploaded file
     $filename = $_FILES['myfile']['name'];
-
     // destination of the file on the server
     $destination = 'C:/xampp/htdocs/uploads/' . $filename;
 
@@ -300,12 +298,15 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 				</div>
 				<div class="col-12 col-m-12 col-sm-12">
 				<div class="card1 ">
-<div class="card-header">
+					<div class="card-header">
 						<form action="courses_resources.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
 				          <h3>Upload Resources</h3>
 				          <hr>
-				          <div class=hralyn>
-				          <input type="file" name="myfile"><br>
+				          <div class="hralyn">
+				          <input size="100" class="abc" type="file" name="myfile">
+				          <br>
+				          <br>
+				          <br>
 				          <button class="button btnFade btnLightBlue" type="submit" name="save">upload</button>
 				          <div>
 				        </form>
