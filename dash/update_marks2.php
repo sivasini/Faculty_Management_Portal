@@ -38,7 +38,7 @@ elseif($type=='Periodicals#2'){
 }
 
 if (mysqli_query($con, $sql)) {
-  echo "<script> alert('Leave applied successfully.');</script>";
+  echo "<script> alert('Marks updated successfully.');</script>";
   echo "<script> window.location.href='update_marks.php?Course_ID=$Course_ID';</script>";
 } else {
   echo "<script> alert('Error while inserting record.');</script>";
