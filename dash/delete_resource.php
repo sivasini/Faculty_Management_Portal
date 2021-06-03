@@ -17,7 +17,7 @@ $del = mysqli_query($db,"DELETE FROM files WHERE Resource_name = '$id' and Cours
 if($del)
 {
     mysqli_close($db); // Close connection
-    header("location:courses_resources.php");// redirects to all records page
+    header("location:courses_resources.php?Course_ID=$id1");// redirects to all records page
     exit;	
 }
 else

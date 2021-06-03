@@ -8,7 +8,10 @@
   $_SESSION['passw']=$_SESSION['passw'];
   include('db.php');
   if($_GET['Course_ID']){
-  $Course_ID = $_GET['Course_ID'];
+  	$Course_ID = $_GET['Course_ID'];
+  }
+  else{
+  	$Course_ID = $_SESSION["crse"];
   }
   $username=$_SESSION['userid'];
   $sql = "select * from faculty, login where (login.Fac_ID='$username' || login.mobile='$username') && login.Fac_ID=faculty.Fac_ID ";

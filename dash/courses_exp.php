@@ -8,6 +8,7 @@
   $_SESSION['passw']=$_SESSION['passw'];
   include('db.php');
   $Course_ID = $_GET['Course_ID'];
+  $_SESSION["crse"] = $Course_ID;
   $date=date("Y-m-d");
   if(isset($_POST['save'])){
   $date =$_POST['mydate'];
