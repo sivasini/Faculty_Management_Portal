@@ -113,7 +113,7 @@
 				</a>
 			</li>
 			<li class="sidebar-nav-item">
-				<a href="profile.php" class="sidebar-nav-link active">
+				<a href="profile.php" class="sidebar-nav-link">
 					<div>
 						<i class="fa fa-user"></i>
 					</div>
@@ -121,15 +121,15 @@
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+				<a href="courses_main.php" class="sidebar-nav-link">
 					<div>
-						<i class="fa fa-bell"></i>
+						<i class="fa fa-cubes"></i>
 					</div>
-					<span class='span'>Notifications</span>
+					<span class='span'>My Courses</span>
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="index.php" class="sidebar-nav-link">
+				<a href="index.php" class="sidebar-nav-link active">
 					<div>
 						<i class="fa fa-th-list"></i>
 					</div>
@@ -137,7 +137,7 @@
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+				<a href="gatepass_fac.php" class="sidebar-nav-link">
 					<div>
 						<i class="fa fa-home"></i>
 					</div>
