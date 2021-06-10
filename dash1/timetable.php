@@ -199,7 +199,7 @@
               $date = date("Y-m-d");
               $day = date("l", strtotime($date));
 
-              if($time>17){
+              if($time>=17){
                 $sql="update timetable set meet_name='',starttime='',endtime='',reason='',meet_link='' where day='$day';";
                 if(mysqli_query($con, $sql)){
                   echo '';
