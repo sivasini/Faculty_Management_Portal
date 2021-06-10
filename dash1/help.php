@@ -21,7 +21,11 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="courses.css">
-
+<style type="text/css">
+	.xyz{
+		padding: 25px;
+	}
+</style>
 </head>
 <body class="overlay-scrollbar">
 	<!-- navbar -->
@@ -113,7 +117,7 @@
         </a>
       </li>
       <li class="sidebar-nav-item">
-        <a href="hprofile.php" class="sidebar-nav-link">
+        <a href="profile.php" class="sidebar-nav-link">
           <div>
             <i class="fa fa-user"></i>
           </div>
@@ -121,7 +125,7 @@
         </a>
       </li>
       <li  class="sidebar-nav-item">
-        <a href="hcourses_main.php" class="sidebar-nav-link active">
+        <a href="courses_main.php" class="sidebar-nav-link">
           <div>
             <i class="fa fa-cubes"></i>
           </div>
@@ -129,15 +133,15 @@
         </a>
       </li>
       <li  class="sidebar-nav-item">
-        <a href="head_faculty.php" class="sidebar-nav-link">
-          <div>
-            <i class="fa fa-th-list"></i>
-          </div>
-          <span class='span'>Manage pass</span>
-        </a>
-      </li>
+				<a href="index.php" class="sidebar-nav-link">
+					<div>
+						<i class="fa fa-th-list"></i>
+					</div>
+					<span class='span'>Attendance</span>
+				</a>
+			</li>
       <li  class="sidebar-nav-item">
-        <a href="gatepass_hfac.php" class="sidebar-nav-link">
+        <a href="gatepass_fac.php" class="sidebar-nav-link">
           <div>
             <i class="fa fa-home"></i>
           </div>
@@ -145,7 +149,7 @@
         </a>
       </li>
       <li  class="sidebar-nav-item">
-        <a href="hhelp.php" class="sidebar-nav-link">
+        <a href="help.php" class="sidebar-nav-link active">
           <div>
             <i class="fa fa-question-circle"></i>
           </div>
@@ -154,54 +158,22 @@
       </li>
     </ul>
 	</div>
-	<?php
-		$query = "SELECT * FROM courses where Fac_ID LIKE '$username'";
-		$query_run = mysqli_query($con,$query);
-	?>
+	
 	<!-- main content -->
 
 	<div class="wrapper">
 		<div class="row">
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card1 ">
-					<div class="card-header">
-						<nav>
-							<ul class="my-nav">
-							<?php
-								if($query_run)
-								{
-									foreach($query_run as $row)
-									{
-
-							?>
-							<div class="dd" id="drop-down">
-							  <span><?php echo $row['Course_ID'];?></span>
-							  <label>
-							    <input type="checkbox">
-							    <ul>
-							        <li><a href="hcourses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
-		    						<li><a href="hcourses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
-		    						<li><a href="hcourse_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
-		    						<li role="separator" class="divider"></li>
-		    						<!-- <li role="separator" class="divider"></li>
-		    						<li><a href="#">Separated link</a></li> -->
-							    </ul>
-							  </label>
-							</div>
-							<?php
-									}
-								}
-
-								else
-								{
-									echo "No Record Found";
-								}
-
-							?>
-						</ul>
-						</nav>
-			</div>
-		</div>
+					<div class="card-hea">
+						<h3>HELP</h3>
+					</div>
+					<div class="card-body">
+						<div class="xyz">
+							<p>The links on the left should direct you to how to contact us or resolve problems. If you cannot find your issue listed there, you can email helpful, experienced volunteers at admin@amrita.edu. Please refrain from emailing about disagreements with content; they will not be resolved via email.CALL US:12345-56789</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

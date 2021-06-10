@@ -8,7 +8,7 @@
   $_SESSION['passw']=$_SESSION['passw'];
   include('db.php');
   $Course_ID = $_GET['Course_ID'];
-  $_SESSION["crse"] = $Course_ID;
+  $Assignment_ID = $_GET['Assignment_ID'];
   $date=date("Y-m-d");
   if(isset($_POST['save'])){
   $date =$_POST['mydate'];
@@ -56,7 +56,7 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Assignments</title>
+	<title>View Submissions</title>
 
 
 
@@ -145,57 +145,57 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 	<!-- sidebar -->
   <div class="sidebar">
 		<ul class="sidebar-nav">
-			<li class="sidebar-nav-item">
-				<a href="timetable.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-calendar"></i>
-					</div>
-					<span class='span'>
-						Schedule
-					</span>
-				</a>
-			</li>
-			<li class="sidebar-nav-item">
-				<a href="profile.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-user"></i>
-					</div>
-					<span class='span'>My profile</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="courses_main.php" class="sidebar-nav-link active">
-					<div>
-						<i class="fa fa-cubes"></i>
-					</div>
-					<span class='span'>My Courses</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="index.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-th-list"></i>
-					</div>
-					<span class='span'>Attendance</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="gatepass_fac.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-home"></i>
-					</div>
-					<span class='span'>Gatepass</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="help.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-question-circle"></i>
-					</div>
-					<span class='span'>Help</span>
-				</a>
-			</li>
-		</ul>
+      <li class="sidebar-nav-item">
+        <a href="htimetable.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-calendar"></i>
+          </div>
+          <span class='span'>
+            Schedule
+          </span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="hprofile.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-user"></i>
+          </div>
+          <span class='span'>My profile</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="hcourses_main.php" class="sidebar-nav-link active">
+          <div>
+            <i class="fa fa-cubes"></i>
+          </div>
+          <span class='span'>My Courses</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="head_faculty.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-th-list"></i>
+          </div>
+          <span class='span'>Manage pass</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="gatepass_hfac.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-home"></i>
+          </div>
+          <span class='span'>Gatepass</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="hhelp.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-question-circle"></i>
+          </div>
+          <span class='span'>Help</span>
+        </a>
+      </li>
+    </ul>
 	</div>
 	<?php
 		$query = "SELECT * FROM courses where Fac_ID LIKE '$username'";
@@ -223,9 +223,9 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 							  <label>
 							    <input type="checkbox">
 							    <ul>
-							        <li><a href="courses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
-		    						<li><a href="courses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
-		    						<li><a href="course_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
+							        <li><a href="hcourses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
+		    						<li><a href="hcourses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
+		    						<li><a href="hcourse_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
 		    						<li role="separator" class="divider"></li>
 							    </ul>
 							  </label>
@@ -279,7 +279,7 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 							      <td><?php echo $file['Format']; ?></td>
 							      <td><?php echo $file['Description']; ?></td>
 								   <td>
-								   	<a href="courses_view_submission.php?Course_ID=<?php echo $file['Course_ID']?>&Assignment_ID=<?php echo $file['Assignment_ID']?>">
+								   	<a href="hcourses_view_submission.php?Course_ID=<?php echo $file['Course_ID']?>&Assignment_ID=<?php echo $file['Assignment_ID']?>">
 									  View Submissions
 								  </a>
 								</td>
@@ -300,18 +300,65 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 							  }
 					    ?>
 					</div>
-
-
+					<div class="col-12 col-m-12 col-sm-12">
+						<div class="card1 car ">
+							<div class="card-header">
+								<div class="abcd">
+								<h2>Assignment <?php echo $Assignment_ID ?></h2>
+								<a href=hcourses_exp.php?Course_ID=<?php echo $Course_ID ?>&Assignment_ID=<?php echo $Assignment_ID ?>">
+								<i class="fa fa-times"></i>
+								</a>
+							</div>
+							</div>
+							<div>
+							<table>
+							<thead>
+							    <th>Student_ID</th>
+							    <th>Document</th>
+							</thead>
+							<?php
+								$sql = "SELECT * FROM  show_submission where Assignment_ID='$Assignment_ID'";
+								$result = mysqli_query($conn, $sql);
+								$files = mysqli_fetch_all($result, MYSQLI_ASSOC);
+								$i=0;
+							?>
+							<tbody>
+							  <?php foreach ($files as $file): ?>
+							    <tr>
+							      <?php
+							      	$i=$i+1;
+							      	$des = '/student/'.$file['submsn_name'];
+							      ?>
+							      <td><?php echo $file['S_ID']; ?></td>
+							      <td><a href="<?php echo $des ?>" target="_blank"><?php echo $file['submsn_name']; ?></a></td>
+							    </tr>
+							  <?php endforeach?>
+							</tbody>
+						</table>
+						<?php
+						if ($i!=0) {
+							  }
+							  else{
+					    ?><table>
+					    	<tbody>
+					    <td>No Submissions present</td>
+					    </tbody>
+						</table>
+						<?php
+							  }
+					    ?>
+							</div>
+					    </div>
 					</div>
-				</div>
-				<div class="col-12 col-m-12 col-sm-12">
+					</div>
+					<div class="col-12 col-m-12 col-sm-12">
 				<div class="card1 ">
 					<div class="card-header">
 						
 				          <h3>Make Assignment</h3>
 				    </div>
 				    <div class="card-header">
-				    	<form action="courses_exp.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
+				    	<form action="hcourses_exp.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
 				          <div class="hralyn">
 				          <input type="file" name="myfile"><br>
 				          </div>
@@ -333,7 +380,9 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 				        </form>
 				    </div>
 			</div>
-		</div>
+					</div>
+
+
 </div>
 
 

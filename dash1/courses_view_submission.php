@@ -188,7 +188,7 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+				<a href="help.php" class="sidebar-nav-link">
 					<div>
 						<i class="fa fa-question-circle"></i>
 					</div>

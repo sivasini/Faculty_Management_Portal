@@ -141,7 +141,7 @@
 				</a>
 			</li>
 			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link">
+				<a href="help.php" class="sidebar-nav-link">
 					<div>
 						<i class="fa fa-question-circle"></i>
 					</div>

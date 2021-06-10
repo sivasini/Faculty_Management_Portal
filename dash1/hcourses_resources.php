@@ -7,29 +7,32 @@
   $_SESSION['userid']=$_SESSION['userid'];
   $_SESSION['passw']=$_SESSION['passw'];
   include('db.php');
-  $Course_ID = $_GET['Course_ID'];
-  $_SESSION["crse"] = $Course_ID;
-  $date=date("Y-m-d");
-  if(isset($_POST['save'])){
-  $date =$_POST['mydate'];
-  $format =$_POST['myformat'];
-  $reason =$_POST['myreason'];
+  if($_GET['Course_ID']){
+  	$Course_ID = $_GET['Course_ID'];
   }
-$username=$_SESSION['userid'];
+  else{
+  	$Course_ID = $_SESSION["crse"];
+  }
+  $username=$_SESSION['userid'];
   $sql = "select * from faculty, login where (login.Fac_ID='$username' || login.mobile='$username') && login.Fac_ID=faculty.Fac_ID ";
   $result=mysqli_query($con,$sql);
   $row=mysqli_fetch_assoc($result);
 
+  /*$Course_ID = $_GET['Course_ID'];
+  if ($Course_ID) {
+  	$_SESSION['Course_ID']=$Course_ID;
+  }
+  $a = $_SESSION['Course_ID'];*/
 
 
- $conn = new mysqli("localhost","root","","faculty_dashboard");
+// connect to the database
+  $conn = new mysqli("localhost","root","","faculty_dashboard");
 // Uploads files
 if (isset($_POST['save'])) { // if save button on the form is clicked
     // name of the uploaded file
     $filename = $_FILES['myfile']['name'];
-
     // destination of the file on the server
-    $destination = 'C:/xampp/htdocs/assignments/' . $filename;
+    $destination = 'C:/xampp/htdocs/uploads/' . $filename;
 
     // get the file extension
     $extension = pathinfo($filename, PATHINFO_EXTENSION);
@@ -44,26 +47,27 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
         // move the uploaded (temporary) file to the specified destination
         $today = date("Y-m-d");
         if (move_uploaded_file($file, $destination)) {
-            $sql = "INSERT INTO assignments (Fac_ID, Course_ID, Assignment_name, Start_DATE, End_Date, Format, Description) VALUES ('$username','$Course_ID','$filename','$today','$date','$format','$reason')";
+            $sql = "INSERT INTO files (Fac_ID, Course_ID, Resource_name, size, upload_time) VALUES ('$username','$Course_ID','$filename','$size','$today')";
             if (mysqli_query($conn, $sql)) {
             }
         } else {
         }
-   }
+    }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Assignments</title>
+	<title>Resources</title>
 
 
 
 	<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="courses1.css">
+	<link rel="stylesheet" type="text/css" href="courses.css">
 
 </head>
 <body class="overlay-scrollbar">
@@ -78,13 +82,8 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 			</li>
 			<li class="nav-item faculty">
 				<b><?php
-				$username=$_SESSION['userid'];
-
-				$sql = "select * from faculty, login where (login.Fac_ID='$username' || login.mobile='$username') && login.Fac_ID=faculty.Fac_ID ";
-				$result=mysqli_query($con,$sql);
-		        $row=mysqli_fetch_assoc($result);
-
-				echo $row['Name'];				?></b>
+				echo $row['Name'];
+				?></b>
 			</li>
 		</ul>
 		<!-- end nav left -->
@@ -145,57 +144,57 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 	<!-- sidebar -->
   <div class="sidebar">
 		<ul class="sidebar-nav">
-			<li class="sidebar-nav-item">
-				<a href="timetable.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-calendar"></i>
-					</div>
-					<span class='span'>
-						Schedule
-					</span>
-				</a>
-			</li>
-			<li class="sidebar-nav-item">
-				<a href="profile.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-user"></i>
-					</div>
-					<span class='span'>My profile</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="courses_main.php" class="sidebar-nav-link active">
-					<div>
-						<i class="fa fa-cubes"></i>
-					</div>
-					<span class='span'>My Courses</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="index.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-th-list"></i>
-					</div>
-					<span class='span'>Attendance</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="gatepass_fac.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-home"></i>
-					</div>
-					<span class='span'>Gatepass</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="help.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-question-circle"></i>
-					</div>
-					<span class='span'>Help</span>
-				</a>
-			</li>
-		</ul>
+      <li class="sidebar-nav-item">
+        <a href="htimetable.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-calendar"></i>
+          </div>
+          <span class='span'>
+            Schedule
+          </span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="hprofile.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-user"></i>
+          </div>
+          <span class='span'>My profile</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="hcourses_main.php" class="sidebar-nav-link active">
+          <div>
+            <i class="fa fa-cubes"></i>
+          </div>
+          <span class='span'>My Courses</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="head_faculty.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-th-list"></i>
+          </div>
+          <span class='span'>Manage pass</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="gatepass_hfac.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-home"></i>
+          </div>
+          <span class='span'>Gatepass</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="hhelp.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-question-circle"></i>
+          </div>
+          <span class='span'>Help</span>
+        </a>
+      </li>
+    </ul>
 	</div>
 	<?php
 		$query = "SELECT * FROM courses where Fac_ID LIKE '$username'";
@@ -223,10 +222,10 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 							  <label>
 							    <input type="checkbox">
 							    <ul>
-							        <li><a href="courses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
-		    						<li><a href="courses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
-		    						<li><a href="course_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
-		    						<li role="separator" class="divider"></li>
+							        <li><a href="hcourses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
+		    						<li><a href="hcourses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
+		    						<li><a href="hcourse_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
+		    						<!-- <li role="separator" class="divider"></li> -->
 							    </ul>
 							  </label>
 							</div>
@@ -244,26 +243,24 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 						</nav>
 			</div>
 		</div>
-		</div>
 		<?php
-			$sql = "SELECT * FROM assignments where Course_ID='$Course_ID'";
+			$sql = "SELECT * FROM files where Course_ID='$Course_ID'";
 			$result = mysqli_query($conn, $sql);
 			$files = mysqli_fetch_all($result, MYSQLI_ASSOC);
 			$i=0;
 		?>
+		</div>
 			<div class="col-12 col-m-12 col-sm-12">
 				<div class="card1 ">
 					<div class="card-header">
-						<h1>Assignments</h1>
+						<h1>Resources</h1>
 					</div>
 					<div>
 						<table>
 							<thead>
 							    <th>Filename</th>
-							    <th>Start Date</th>
-							    <th>End Date</th>
-							    <th>Format</th>
-							    <th>Description</th>
+							    <th>Size</th>
+							    <th>Date</th>
 							    <th></th>
 							</thead>
 							<tbody>
@@ -271,16 +268,14 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 							    <tr>
 							      <?php
 							      	$i=$i+1;
-							      	$des = '/assignments/'.$file['Assignment_Name'];
+							      	$des = '/uploads/'.$file['Resource_name'];
 							      ?>
-							      <td><a href="<?php echo $des ?>" target="_blank"><?php echo $file['Assignment_Name']; ?></a></td>
-							      <td><?php echo $file['Start_DATE']; ?></td>
-							      <td><?php echo $file['End_DATE']; ?></td>
-							      <td><?php echo $file['Format']; ?></td>
-							      <td><?php echo $file['Description']; ?></td>
+							      <td><a href="<?php echo $des ?>" target="_blank"><?php echo $file['Resource_name']; ?></a></td>
+							      <td><?php echo floor($file['size'] / 1000) . ' KB'; ?></td>
+							      <td><?php echo $file['upload_time']; ?></td>
 								   <td>
-								   	<a href="courses_view_submission.php?Course_ID=<?php echo $file['Course_ID']?>&Assignment_ID=<?php echo $file['Assignment_ID']?>">
-									  View Submissions
+								   	<a href="hdelete_resource.php?NAME=<?php echo $file['Resource_name'];?>&Course_ID=<?php echo $Course_ID;?>">
+									  <i class="fa fa-trash"></i>
 								  </a>
 								</td>
 							    </tr>
@@ -293,7 +288,7 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 							  else{
 					    ?><table>
 					    	<tbody>
-					    <td>Add Assignments</td>
+					    <td>No Resources found</td>
 					    </tbody>
 						</table>
 						<?php
@@ -307,29 +302,16 @@ if (isset($_POST['save'])) { // if save button on the form is clicked
 				<div class="col-12 col-m-12 col-sm-12">
 				<div class="card1 ">
 					<div class="card-header">
-						
-				          <h3>Make Assignment</h3>
-				    </div>
-				    <div class="card-header">
-				    	<form action="courses_exp.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
+						<form action="hcourses_resources.php?Course_ID=<?php echo $Course_ID?>" method="post" enctype="multipart/form-data" >
+				          <h3>Upload Resources</h3>
+				          <hr>
 				          <div class="hralyn">
-				          <input type="file" name="myfile"><br>
-				          </div>
-				          <div class="hralyn">
-				          <label>End Date:</label>
-				          <input type="Date" name="mydate">
-				          </div>
-				          <div class="hralyn">
-				          <label>Format:</label>
-				          <input type="text" name="myformat">
-				          </div>
-				          <div class="hralyn">
-				          <label>Reason:</label>
-				          <input type="text" name="myreason">
-				      	  </div>
-				      	  <div class="xav">
-				          <button class="button btnFade btnLightBlue" type="submit" name="save">CREATE</button>
-						</div>
+				          <input size="100" class="abc" type="file" name="myfile">
+				          <br>
+				          <br>
+				          <br>
+				          <button class="button btnFade btnLightBlue" type="submit" name="save">upload</button>
+				          <div>
 				        </form>
 				    </div>
 			</div>

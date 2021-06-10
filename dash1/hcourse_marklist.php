@@ -102,57 +102,57 @@
 	<!-- sidebar -->
 	<div class="sidebar">
 		<ul class="sidebar-nav">
-			<li class="sidebar-nav-item">
-				<a href="timetable.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-calendar"></i>
-					</div>
-					<span class='span'>
-						Schedule
-					</span>
-				</a>
-			</li>
-			<li class="sidebar-nav-item">
-				<a href="profile.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-user"></i>
-					</div>
-					<span class='span'>My profile</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="#" class="sidebar-nav-link  active">
-					<div>
-						<i class="fa fa-cubes"></i>
-					</div>
-					<span class='span'>My Courses</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="index.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-th-list"></i>
-					</div>
-					<span class='span'>Attendance</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="gatepass_fac.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-home"></i>
-					</div>
-					<span class='span'>Gatepass</span>
-				</a>
-			</li>
-			<li  class="sidebar-nav-item">
-				<a href="help.php" class="sidebar-nav-link">
-					<div>
-						<i class="fa fa-question-circle"></i>
-					</div>
-					<span class='span'>Help</span>
-				</a>
-			</li>
-		</ul>
+      <li class="sidebar-nav-item">
+        <a href="htimetable.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-calendar"></i>
+          </div>
+          <span class='span'>
+            Schedule
+          </span>
+        </a>
+      </li>
+      <li class="sidebar-nav-item">
+        <a href="hprofile.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-user"></i>
+          </div>
+          <span class='span'>My profile</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="hcourses_main.php" class="sidebar-nav-link active">
+          <div>
+            <i class="fa fa-cubes"></i>
+          </div>
+          <span class='span'>My Courses</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="head_faculty.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-th-list"></i>
+          </div>
+          <span class='span'>Manage pass</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="gatepass_hfac.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-home"></i>
+          </div>
+          <span class='span'>Gatepass</span>
+        </a>
+      </li>
+      <li  class="sidebar-nav-item">
+        <a href="hhelp.php" class="sidebar-nav-link">
+          <div>
+            <i class="fa fa-question-circle"></i>
+          </div>
+          <span class='span'>Help</span>
+        </a>
+      </li>
+    </ul>
 	</div>
 	<?php
 		$query = "SELECT * FROM courses where Fac_ID LIKE '$username'";
@@ -180,9 +180,9 @@
 							  <label>
 							    <input type="checkbox">
 							    <ul>
-							        <li><a href="courses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
-		    						<li><a href="courses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
-		    						<li><a href="course_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
+							        <li><a href="hcourses_resources.php?Course_ID=<?php echo $row['Course_ID']?>">Resources</a></li>
+		    						<li><a href="hcourses_exp.php?Course_ID=<?php echo $row['Course_ID']?>">Assignments</a></li>
+		    						<li><a href="hcourse_marklist.php?Course_ID=<?php echo $row['Course_ID']?>">MarkList</a></li>
 		    						<!-- <li role="separator" class="divider"></li> -->
 							    </ul>
 							  </label>
